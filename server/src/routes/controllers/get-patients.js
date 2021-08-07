@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const { patients } = require('../../../data/data.json');
 
 const {
   calculateBmi,
@@ -23,11 +22,11 @@ async function analysePatientsInformation() {
     stream.on('end', () => {
       parsedObj = JSON.parse(data);
       analysedPatientsInfo = parsedObj.patients.map((patient) => {
-        const bmi = calculateBmi(patient.WeightKg, patient.HeightCm);
+        const bmi = calculateBmi(patient.HeightCm, patient.WeightKg);
         const { bmiCategory, healthRisk } = getHealthRiskandCategory(bmi);
         return { ...patient, bmi, bmiCategory, healthRisk };
       });
-      resolve(analysedPatientsInfo)
+      resolve(analysedPatientsInfo);
     });
     stream.on('error', (err) => {
       reject(err);

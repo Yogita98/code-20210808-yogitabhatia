@@ -2,7 +2,7 @@ const calculateBmi = (height, weight) => {
   const heightInMetres = height / 100;
   const bmi = weight / (heightInMetres * heightInMetres);
   return roundToTwo(bmi);
-}
+};
 
 const getHealthRiskandCategory = (bmi) => {
   let category, risk;
@@ -31,13 +31,13 @@ const getHealthRiskandCategory = (bmi) => {
     bmiCategory: category,
     healthRisk: risk,
   };
-}
+};
 
-function roundToTwo(num) {    
-    return +(Math.round(num + "e+2")  + "e-2");
+function roundToTwo(num) {
+  return +(Math.round(num + 'e+2') + 'e-2');
 }
 
 module.exports = {
-    calculateBmi,
-    getHealthRiskandCategory,
-}
+  calculateBmi,
+  getHealthRiskandCategory,
+};
