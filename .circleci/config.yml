@@ -16,6 +16,7 @@ jobs:
           override-ci-command: npm i
       - run:
           name: Test
+          app-dir: ~/code-20210808-yogitabhatia/server/
           command: npm test
 
 workflows:
