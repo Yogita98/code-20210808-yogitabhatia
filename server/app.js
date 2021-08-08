@@ -1,10 +1,7 @@
-// const morgan = require('morgan');
-// const logger = require('converse-logger');
 const bodyParser = require('body-parser');
-const { loggers } = require('winston');
-// const cookieParser = require('cookie-parser');
 const allowedMethods = ['GET', 'POST'];
-const access_control_allow_origin = process.env.ACCESS_CONTROL_ALLOW_ORIGIN || '*'; // Gotta read more about it
+const access_control_allow_origin =
+  process.env.ACCESS_CONTROL_ALLOW_ORIGIN || '*';
 
 module.exports = (app) => {
   app.use(bodyParser.json());
@@ -46,20 +43,4 @@ module.exports = (app) => {
       error: 'Not Found',
     });
   });
-
-  // error handler, will be used for throwing validation errors
-//   app.use((err, req, res, next) => {
-//     logger.error('Error validating request parameters ', {
-//       error: err,
-//       component: 'app.js',
-//     });
-
-//     if (err.custom) {
-//       res.status(err.code || 400).json({
-//         message: err.toString(),
-//       });
-//     } else {
-//       res.status(400).json(err);
-//     }
-//   });
 };

@@ -1,7 +1,6 @@
 const axios = require('axios');
 const { logger } = require('../../helpers/logger');
 const { endpointName } = require('../handlers/get-patients');
-logger.info(endpointName)
 
 async function getOverweightPatientCount() {
   try {

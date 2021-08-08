@@ -1,6 +1,6 @@
 /**
  * @server.js
- * This file is used for setting up an express app and the websocket server
+ * This file is used for setting up an express app
  *
  */
 
@@ -24,3 +24,5 @@ require('./app')(app);
 server.listen(port, function () {
   logger.info(`SERVICE is now running on port ${port}`);
 });
+
+module.exports = app

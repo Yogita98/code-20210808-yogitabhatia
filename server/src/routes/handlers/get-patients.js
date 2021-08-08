@@ -10,8 +10,8 @@ const endpoint = async (request, response) => {
     const patientsInfo = await analysePatientsInformation();
     return response.status(200).json(patientsInfo);
   } catch (error) {
-    /* istanbul ignore next */
-    return response.status(error.code || 500).json({
+    logger.error(error.toString())
+    return response.status(500).json({
       message: error.toString(),
     });
   }

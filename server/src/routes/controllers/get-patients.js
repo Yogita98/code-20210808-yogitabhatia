@@ -6,15 +6,19 @@ const {
   getHealthRiskandCategory,
 } = require('../../helpers/helper');
 
+const ROOT_DIR = '../../../';
+
 async function analysePatientsInformation() {
+  const filename = path.join(__dirname, ROOT_DIR, 'data/data.json');
   let data = '',
     parsedObj = '',
     analysedPatientsInfo;
-  const stream = fs.createReadStream(
-    path.join(__dirname, '../../../', 'data/data.json')
-  );
 
   return new Promise((resolve, reject) => {
+    if (!fs.existsSync(filename)) {
+      reject('File does not exist');
+    }
+    const stream = fs.createReadStream(filename);
     stream.setEncoding('UTF8');
     stream.on('data', (chunk) => {
       data = data + chunk;

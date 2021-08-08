@@ -13,7 +13,6 @@ const endpoint = async (request, response) => {
     return response.status(200).json({ overweightCount });
   } catch (error) {
     logger.error(`error occurred fetching information` + err);
-    /* istanbul ignore next */
     return response.status(error.code || 500).json({
       message: error.toString(),
     });
