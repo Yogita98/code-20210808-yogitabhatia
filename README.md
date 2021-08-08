@@ -5,11 +5,11 @@ The input data is internally being fed using a json file. The file is converted 
 
 ### `npm start`
 
-This will the setup the app and listen for requests on port 3000
+This will setup the app and listen for requests on port 3000
 
 ### `npm run start-dev`
 
-This will the run the app in development mode
+This will run the app in development mode
 
 ### `npm test`
 
