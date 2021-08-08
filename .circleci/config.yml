@@ -5,7 +5,7 @@ orbs:
 
 jobs:
   build:
-    working_directory: ~/code-20210808-yogitabhatia/server/
+    working_directory: ~/code-20210808-yogitabhatia/
     executor: node/default
     steps:
       - checkout
