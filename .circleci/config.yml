@@ -1,25 +1,36 @@
 version: 2.1
-
 orbs:
   node: circleci/node@4.6.0
 
 jobs:
   build:
-    working_directory: ~/code-20210808-yogitabhatia/server
+    working_directory: ~/code-20210808-yogitabhatia
     executor: node/default
     steps:
       - checkout
       - node/install-npm
       - node/install-packages:
-          app-dir: .
+          app-dir: ~/code-20210808-yogitabhatia/server
           cache-path: node_modules
           override-ci-command: npm i
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+  test:
+    docker:
+      - image: cimg/node:current
+    steps:
+      - attach_workspace:
+          at: ~/code-20210808-yogitabhatia/server
       - run:
           name: Test
           command: npm test
-
 workflows:
   version: 2
-  build:
+  build_and_test:
     jobs:
       - build
+      - test:
+          requires:
+            - build
