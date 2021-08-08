@@ -14,17 +14,6 @@ jobs:
           app-dir: ~/code-20210808-yogitabhatia/server/
           cache-path: node_modules
           override-ci-command: npm i
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-
-  test:
-    docker:
-      - image: cimg/node:current
-    steps:
-      - attach_workspace:
-          at: ./server
       - run:
           name: Test
           command: npm test
@@ -34,6 +23,3 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - test:
-          requires:
-            - build
