@@ -24,7 +24,7 @@ jobs:
       - image: cimg/node:current
     steps:
       - attach_workspace:
-          at: .
+          at: ./server
       - run:
           name: Test
           command: npm test
