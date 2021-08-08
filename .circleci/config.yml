@@ -20,9 +20,11 @@ jobs:
   test:
     docker:
       - image: cimg/node:current
+    working_directory: ~/code-20210808-yogitabhatia/server
     steps:
+      - checkout
       - attach_workspace:
-          at: ~/code-20210808-yogitabhatia/server
+          at: .
       - run:
           name: Test
           command: npm test
